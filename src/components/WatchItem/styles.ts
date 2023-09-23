@@ -30,6 +30,12 @@ export const StyledContainer = styled.div<{ color: string }>`
     }
   }
 
+  .truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   .cta {
     display: flex;
     flex-direction: column;
