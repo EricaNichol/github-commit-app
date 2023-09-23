@@ -19,12 +19,7 @@ export const options = {
     },
   },
   layout: {
-    padding: {
-      top: 25, // padding at the top
-      bottom: 25, // padding at the bottom
-      left: 25, // padding on the left
-      right: 25, // padding on the right
-    },
+    padding: 100,
   },
   scales: {
     x: {

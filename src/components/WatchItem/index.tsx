@@ -13,6 +13,7 @@ export interface autoCompleteProps {
   stargazers_count: number;
   updated_at: string;
   uniqueColor: string;
+  isHovered: boolean;
 }
 
 const WatchItem = ({
@@ -25,6 +26,7 @@ const WatchItem = ({
   uniqueColor,
   handleMouseEnterCallback,
   handleMouseLeaveCallback,
+  isHovered,
 }: autoCompleteProps) => {
   const [show, setShow] = useState(false);
   const formattedCount = useMemo(
@@ -78,12 +80,13 @@ const WatchItem = ({
   return (
     <StyledContainer
       color={uniqueColor}
+      isHover={isHovered}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       {/* Info */}
       <div>
-        <div>
+        <div className="name">
           <span className="accent">{owner} / </span>
           {/* ECLIPLSE */}
           <span className="truncate">{name}</span>

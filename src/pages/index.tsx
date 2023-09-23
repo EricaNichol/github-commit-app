@@ -1,5 +1,5 @@
 import SearchInput from "@/components/SearchInput";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { watchStore } from "@/stores/watch";
 import { activityStore } from "@/stores/activity";
 import WatchItem, { autoCompleteProps } from "../components/WatchItem";
@@ -9,8 +9,8 @@ import tinycolor from "tinycolor2";
 import { Search } from "react-feather";
 
 export default function Home() {
+  const [hoveredId, setHoveredId] = useState<number | null>(null);
   const chartRef = useRef<any>(null);
-
   const { watchedRepos, getWatchedRepos, removeWatchRepo } = watchStore(
     (state: any) => ({
       watchedRepos: state.watchedRepos,
@@ -18,7 +18,6 @@ export default function Home() {
       removeWatchRepo: state.removeWatchRepo,
     })
   );
-
   const { activities, getAllCommitActivity } = activityStore((state: any) => ({
     activities: state.activities,
     getAllCommitActivity: state.getAllCommitActivity,
@@ -38,6 +37,8 @@ export default function Home() {
 
   // make chart dataset opac color
   const handleMouseEnter = (id: number) => {
+    setHoveredId(id);
+
     if (!chartRef.current) return;
 
     const chart = chartRef.current;
@@ -48,7 +49,7 @@ export default function Home() {
         const hexColor = item.borderColor;
 
         // alpha is opacity
-        item.borderColor = tinycolor(hexColor).setAlpha(0.5).toString();
+        item.borderColor = tinycolor(hexColor).setAlpha(0.3).toString();
       }
     });
 
@@ -57,7 +58,8 @@ export default function Home() {
 
   // make chart dataset normal color
   const handleMouseLeave = (id: number) => {
-    console.log("mouse leave");
+    setHoveredId(null);
+
     if (!chartRef.current) return;
 
     const chart = chartRef.current;
@@ -86,6 +88,7 @@ export default function Home() {
               <li key={item?.id}>
                 <WatchItem
                   {...item}
+                  isHovered={hoveredId === null ? true : item.id === hoveredId}
                   handleMouseEnterCallback={handleMouseEnter}
                   handleMouseLeaveCallback={handleMouseLeave}
                   onClickCallback={handleWatchDelete}

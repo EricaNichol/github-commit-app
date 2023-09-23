@@ -152,7 +152,6 @@ export default async (
           // Async Side quest for Adding activites, need to complete this before sending
           // so the graph updates.
           await _addActivties(addedRepo, host as string);
-          console.log("NEEEWWW WATCH ADDED");
 
           res.status(200).json({
             message: "Repo added to watch list",

@@ -126,7 +126,7 @@ export const externalTooltipHandler = (context) => {
   // Display, position, and set styles for font
   tooltipEl.style.opacity = 1;
   tooltipEl.style.left = positionX + tooltip.caretX + 20 + "px";
-  tooltipEl.style.top = positionY + tooltip.caretY - 125 + "px";
+  tooltipEl.style.top = positionY + tooltip.caretY - 100 + "px";
   tooltipEl.style.font = tooltip.options.bodyFont.string;
   tooltipEl.style.padding = "8px 16px 4px";
 };

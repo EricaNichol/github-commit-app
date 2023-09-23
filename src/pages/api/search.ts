@@ -25,9 +25,7 @@ export default async (
 
     // NormalizeQuery
     const normalizedQuery =
-      typeof query === "string"
-        ? encodeURIComponent(query.replace(/"/g, "").toLowerCase())
-        : "";
+      typeof query === "string" ? query.replace(/"/g, "") : "";
 
     // Construct cache paths
     const cacheDirectory = path.join(
@@ -48,12 +46,12 @@ export default async (
       return res.status(200).json({ ...cacheData, cache: true });
     }
 
-    console.log("NEEEWWW SEARCH FETCH");
-
     // Fetch data from GitHub API if not found in cache
     // TODO: use query-string
     const response = await fetch(
-      `https://api.github.com/search/repositories?q=${normalizedQuery}&per_page=${limit}`
+      `https://api.github.com/search/repositories?q=${encodeURIComponent(
+        `${normalizedQuery} in:name`
+      )}&per_page=${limit}`
     );
 
     const data = await response.json();

@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { useEffect } from "react";
+import React, { memo } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -85,4 +85,4 @@ const ActivityChart = ({ activities, forwardRef }: activityChartProps) => {
   );
 };
 
-export default ActivityChart;
+export default memo(ActivityChart);

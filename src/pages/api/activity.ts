@@ -15,8 +15,6 @@ interface ActivityProp {
   chartData: any;
 }
 
-// 1 week for weekly cmomit
-const CACHE_VALIDITY_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 days * 24 hours * 60 minutes * 60 seconds * 1000 milliseconds
 const cacheDirectory = path.join(process.cwd(), "cache", "activityTable");
 const cacheFilePath = path.join(cacheDirectory, "activities.json");
 
