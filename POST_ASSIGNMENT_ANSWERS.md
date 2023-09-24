@@ -10,7 +10,7 @@ I also used zustand for state management because I want to abstract as much stat
 
 **_How long did the assignment take (in hours)? Please break down your answer into buckets (e.g. "Learning Framework", "Coding", "Debugging")._**
 
-The coding exercise took approx 8 hours to complete.
+The coding part of the exercise took approx 8 hours to complete.
 Here is the breakdown.
 
 **Setting up Framework**: (30mins)
